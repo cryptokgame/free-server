@@ -1,0 +1,22 @@
+# Entornos Virtuales
+.venv/
+env/
+venv/
+ENV/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Configuración e información sensible
+.env
+.env.*
+!.env.example
+.claude/
+claude_output.txt
+
+# IDEs
+.vscode/
+.idea/
