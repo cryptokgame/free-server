@@ -152,7 +152,7 @@ class Settings(BaseSettings):
     # All Claude model requests are mapped to this single model (fallback)
     # Format: provider_type/model/name
     model: str = Field(
-        default="nvidia_nim/nvidia/nemotron-3-super-120b-a12b",
+        default="gemini/gemini-3.5-flash",
         validation_alias="MODEL",
     )
 
