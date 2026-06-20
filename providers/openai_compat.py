@@ -189,11 +189,14 @@ class OpenAIChatTransport(BaseProvider):
 
     async def _create_stream(self, body: dict) -> tuple[Any, dict]:
         """Create a streaming chat completion, optionally retrying once."""
-        try:
+        async def _do_create(target_body: dict):
             self._client.api_key = self._config.get_api_key()
-            create_body = self._prepare_create_body(body)
+            create_body = self._prepare_create_body(target_body)
+            return await self._client.chat.completions.create(**create_body, stream=True)
+
+        try:
             stream = await self._global_rate_limiter.execute_with_retry(
-                self._client.chat.completions.create, **create_body, stream=True, on_429=self._rotate_key_on_429
+                _do_create, body, on_429=self._rotate_key_on_429
             )
             return stream, body
         except Exception as error:
@@ -201,10 +204,8 @@ class OpenAIChatTransport(BaseProvider):
             if retry_body is None:
                 raise
 
-            self._client.api_key = self._config.get_api_key()
-            create_retry_body = self._prepare_create_body(retry_body)
             stream = await self._global_rate_limiter.execute_with_retry(
-                self._client.chat.completions.create, **create_retry_body, stream=True, on_429=self._rotate_key_on_429
+                _do_create, retry_body, on_429=self._rotate_key_on_429
             )
             return stream, retry_body
 
