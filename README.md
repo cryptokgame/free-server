@@ -76,4 +76,14 @@ En la configuración de la extensión (por ejemplo, en VS Code), busca la URL de
 ```
 http://127.0.0.1:1616
 ```
+
+**⚠️ PASO CRÍTICO PARA VER TODOS LOS MODELOS:**
+Por defecto, Claude Code ignora los modelos de proveedores externos. Para obligarlo a que lea nuestra lista VIP completa (OpenRouter, Nvidia, Ollama) cuando escribas el comando `/model`, debes agregar esta variable de entorno oculta en tu sistema o terminal (ej. en tu `.bashrc`):
+
+```bash
+export CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY="1"
+```
+
+*(Nota: Si usas el comando `fcc-claude`, esta variable se inyecta mágicamente de forma automática. Solo la necesitas si usas el comando original `claude` a secas o plugins visuales).*
+
 A partir de este momento, todas las peticiones viajarán sin retrasos directamente desde la extensión hasta tu proxy local en el VPS, y de ahí hacia los proveedores gratuitos o de pago que hayas configurado.
