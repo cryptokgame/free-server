@@ -1,0 +1,37 @@
+# Entornos Virtuales
+.venv/
+env/
+venv/
+ENV/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Configuración e información sensible
+.env
+.env.*
+!.env.example
+.claude/
+claude_output.txt
+
+# IDEs
+.vscode/
+.idea/
+
+# Backups de desarrollo
+*.py.MALO
+*.py.bak
+*.py.orig
+
+# Metadatos de paquete
+*.egg-info/
+dist/
+build/
+
+# Cachés de herramientas
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
