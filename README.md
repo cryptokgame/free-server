@@ -63,17 +63,17 @@ uv run fcc-server
 
 *(O alternativamente, si activas el entorno virtual con `source .venv/bin/activate`, puedes ejecutar directamente `fcc-server`).*
 
-El servidor se iniciará en el puerto `8082` (por defecto `127.0.0.1:8082`).
+El servidor se iniciará en el puerto `1616` (por defecto `127.0.0.1:1616`).
 
 ### Panel Gráfico (Admin UI)
 Una vez que el servidor esté corriendo, puedes abrir tu navegador y entrar a:
-`http://localhost:8082/` o `http://<IP-DE-TU-VPS>:8082/` (si abriste el puerto).
+`http://localhost:1616/` o `http://<IP-DE-TU-VPS>:1616/` (si abriste el puerto).
 Allí verás una interfaz visual donde todas tus llaves aparecerán como **Configured** en color verde.
 
 ## 🔌 Cómo conectarlo con Claude Code / OpenCode Zen
 
 En la configuración de la extensión (por ejemplo, en VS Code), busca la URL del Endpoint de la API o la URL de Anthropic, y cámbiala por la de tu servidor local:
 ```
-http://127.0.0.1:8082
+http://127.0.0.1:1616
 ```
 A partir de este momento, todas las peticiones viajarán sin retrasos directamente desde la extensión hasta tu proxy local en el VPS, y de ahí hacia los proveedores gratuitos o de pago que hayas configurado.
